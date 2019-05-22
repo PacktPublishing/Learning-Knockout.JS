@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Media</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <ul class="menu">
+                <li><a href="default.html">Dashboard</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="borrowers.html">Borrowers</a></li>
+            </ul>
+            <h1>Manage Media</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Type</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: catalog">
+                    <tr>
+                        <td><input type="text" data-bind="enable: false, value: ISBN"></td>
+                        <td><select data-bind="options: $parent.mediaTypes, optionsText: 'Name', optionsValue: 'Name', optionsCaption: 'Select a Media Type', value: MediaType"></select></td>
+                        <td><input type="text" data-bind="textInput: Name"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <input type="button" data-bind="click: save" value="Save">
+            </p>
+        </div>
+    </div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/Models/Media.js"></script>
+    <script src="Scripts/ViewModels/MediaViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.MediaViewModel);
+        })
+    </script>
+</body>
+</html>

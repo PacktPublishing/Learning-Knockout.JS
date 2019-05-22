@@ -1,0 +1,9 @@
+﻿{
+    "MediaTypes": [
+        { "Name": "Book" },
+        { "Name": "CD" },
+        { "Name": "DVD" },
+        { "Name": "Game" },
+        { "Name": "Magazine" }
+    ]
+}

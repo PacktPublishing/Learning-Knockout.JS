@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Two-Way Data-Binding</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <h1>Two-Way Data-Binding</h1>
+
+            <fieldset>
+                <legend>Input</legend>
+                <ol>
+                    <li>
+                        <input type="text" data-bind="enable: isEnabled, textInput: message">
+                    </li>
+                    <li>
+                        <div data-bind="text: message" class="output"></div>
+                    </li>
+                </ol>
+                <button data-bind="click: loadMessage">Load Message</button>
+                <input type="checkbox" data-bind="checked: isEnabled">
+            </fieldset>
+
+            <fieldset>
+                <legend>Select (string array)</legend>
+                <ol>
+                    <li>
+                        <select data-bind="disable: isDisabled, options: colors, optionsCaption: 'Select a Color', value: color"></select>
+                    </li>
+                    <li>
+                        <div data-bind="text: color" class="output"></div>
+                    </li>
+                </ol>
+                <input type="checkbox" data-bind="checked: isDisabled">
+            </fieldset>
+
+            <fieldset>
+                <legend>Select (object array, select object)</legend>
+                <ol>
+                    <li>
+                        <select data-bind="hasFocus: isFocused, options: keyValuePairs, optionsText: function(i) { return i.Key; }, optionsCaption: 'Select an Object', value: keyValuePair"></select>
+                    </li>
+                    <li>
+                        <div data-bind="text: keyValuePair() ? keyValuePair().Value : ''" class="output"></div>
+                    </li>
+                </ol>
+            </fieldset>
+
+            <fieldset>
+                <legend>Select (object array, select object property)</legend>
+                <ol>
+                    <li>
+                        <select data-bind="options: keyValuePairs, optionsText: 'Key', optionsValue: 'Value', optionsCaption: 'Select an Object', value: ordinal"></select>
+                    </li>
+                    <li>
+                        <div data-bind="text: ordinal" class="output"></div>
+                    </li>
+                </ol>
+            </fieldset>
+
+            <fieldset>
+                <legend>Multi-Select</legend>
+                <ol>
+                    <li>
+                        <select data-bind="options: colors, selectedOptions: chosenColors" size="6" multiple="multiple"></select>
+                    </li>
+                    <li>
+                        <div class="output">
+                            <ul data-bind="foreach: chosenColors">
+                                <li data-bind="text: $data"></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </fieldset>
+
+            <fieldset>
+                <legend>Radio Buttons</legend>
+                <ol>
+                    <li>
+                        <!-- ko foreach: colors -->
+                        <input type="radio" name="color" data-bind="value: $data, checked: $parent.color, attr: { id: $data }">
+                        <label data-bind="text: $data, attr: { for: $data }" class="checkbox"></label>
+                        <br>
+                        <!-- /ko -->
+                    </li>
+                    <li>
+                        <div data-bind="text: color" class="output"></div>
+                    </li>
+                </ol>
+            </fieldset>
+
+            <fieldset>
+                <legend>Checkbox</legend>
+                <ol>
+                    <li>
+                        <input type="checkbox" data-bind="checked: isChecked">
+                    </li>
+                    <li>
+                        <div data-bind="text: isChecked" class="output"></div>
+                    </li>
+                </ol>
+            </fieldset>
+
+            <fieldset>
+                <legend>Submit</legend>
+                <form data-bind="submit: showMessage">
+                    <ol>
+                        <li>
+                            <input type="text" data-bind="textInput: message">
+                        </li>
+                    </ol>
+                    <input type="submit" value="Show Message">
+                </form>
+            </fieldset>
+
+        </div>
+    </div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/ViewModels/DataBindingViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.DataBindingViewModel);
+        });
+    </script>
+</body>
+</html>

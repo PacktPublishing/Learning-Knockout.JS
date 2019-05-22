@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My Media Catalog</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <ul class="menu">
+                <li><a href="default.html">Dashboard</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="borrowers.html">Borrowers</a></li>
+            </ul>
+            <h1>My Media Catalog</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: catalog">
+                    <tr>
+                        <td data-bind="text: MediaType"></td>
+                        <td data-bind="text: Name, attr: { title: ISBN }"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/Models/Media.js"></script>
+    <script src="Scripts/ViewModels/DefaultViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.DefaultViewModel);
+        });
+    </script>
+</body>
+</html>

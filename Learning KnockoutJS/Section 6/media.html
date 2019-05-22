@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Media</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <ul class="menu">
+                <li><a href="default.html">Dashboard</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="borrowers.html">Borrowers</a></li>
+            </ul>
+            <h1>Manage Media</h1>
+            <button data-bind="button: { label: 'Add a Media Item' }, click: add"></button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: sortedCatalog">
+                    <tr>
+                        <td data-bind="text: MediaType"></td>
+                        <td data-bind="text: Name"></td>
+                        <td>
+                            <button data-bind="button: { label: 'Edit' }, click: $parent.edit"></button>
+                            <button data-bind="button: { label: 'Delete' }, click: $parent.remove"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div data-bind="template: { name: 'media-template', data: media, if: media }, dialog: media, dialogOptions: { title: 'Edit Media', buttons: { 'Save': saveEdit }, dialogClass: 'no-close', modal: true, autoOpen: false, resizable: false, closeOnEscape: false, width: '440px' }"></div>
+    <div data-bind="template: { name: 'media-template', data: newMedia, if: newMedia }, dialog: newMedia, dialogOptions: { title: 'New Media', buttons: { 'Save': saveNew, 'Cancel': cancel }, dialogClass: 'no-close', modal: true, autoOpen: false, resizable: false, closeOnEscape: false, width: '440px' }"></div>
+    <script id="media-template" type="text/html">
+        <ol>
+            <li data-bind="css: { error: MediaType.hasError() }">
+                <label for="mediatype">Media Type</label>
+                <select id="mediatype" data-bind="options: $parent.mediaTypes, optionsText: 'Name', optionsValue: 'Name', optionsCaption: 'Select a Media Type', value: MediaType"></select>
+            </li>
+            <li>
+                <label for="isbn">ISBN</label>
+                <input id="isbn" type="text" data-bind="enable: false, textInput: ISBN">
+            </li>
+            <li data-bind="css: { error: Name.hasError() }">
+                <label for="name">Name</label>
+                <input id="name" type="text" data-bind="textInput: Name">
+            </li>
+        </ol>
+    </script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/knockout-extensions.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/Models/Media.js"></script>
+    <script src="Scripts/ViewModels/MediaViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.MediaViewModel);
+        })
+    </script>
+</body>
+</html>

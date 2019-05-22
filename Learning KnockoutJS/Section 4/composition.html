@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Composition</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <h1>Media Titles</h1>
+            <!-- ko template: { name: 'details-table', data: mediaViewModel.catalog } -->
+            <!-- /ko -->
+            <h1>Borrowers</h1>
+            <!-- ko template: { name: 'details-table', data: borrowerViewModel.borrowers } -->
+            <!-- /ko -->
+        </div>
+    </div>
+    <script id="details-table" type="text/html">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: $data">
+                <tr>
+                    <td data-bind="text: Name"></td>
+                    <td><button data-bind="click: $root.details">Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/Models/Borrower.js"></script>
+    <script src="Scripts/Models/Media.js"></script>
+    <script src="Scripts/ViewModels/BorrowerViewModel.js"></script>
+    <script src="Scripts/ViewModels/MediaViewModel.js"></script>
+    <script src="Scripts/ViewModels/CompositionViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.CompositionViewModel);
+        });
+    </script>
+</body>
+</html>

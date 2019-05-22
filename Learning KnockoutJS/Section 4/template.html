@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Books &amp; Magazines</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <h1>Books</h1>
+            <div data-bind="template: { name: 'media-table', data: books, as: 'catalog' }"></div>
+            <h1>Magazines</h1>
+            <div data-bind="template: { name: 'media-table', data: magazines, as: 'catalog' }"></div>
+        </div>
+    </div>
+    <script id="media-table" type="text/html">
+        <table>
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Media Type</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: catalog">
+                <tr>
+                    <td data-bind="text: ISBN"></td>
+                    <td data-bind="text: MediaType"></td>
+                    <td data-bind="text: Name"></td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+    <script src="Scripts/jquery-2.1.4.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/ViewModels/TemplateViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.TemplateViewModel);
+        });
+    </script>
+</body>
+</html>

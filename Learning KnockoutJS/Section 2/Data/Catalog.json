@@ -1,0 +1,14 @@
+﻿{
+    "Catalog": [
+        { "ISBN": "b0d4a2eb-af17-4cef-a4d2-2e7605ef60bd", "MediaType": "Book", "Name": "Object-Oriented JavaScript" },
+        { "ISBN": "42f9fe63-a2df-418b-b3d7-ab86163b5b26", "MediaType": "Book", "Name": "KnockoutJS Web Development" },
+        { "ISBN": "262aa18a-8f94-4613-8643-91e546c8d47c", "MediaType": "Magazine", "Name": "JS Weekly" },
+        { "ISBN": "d4e054d2-1df9-4b99-9819-59efa96feae7", "MediaType": "Magazine", "Name": "Script Fancy" },
+        { "ISBN": "c9ce7702-a673-4bc4-b6d1-b10c250dc1a5", "MediaType": "CD", "Name": "Gone Chopin, Bach in a Minuet" },
+        { "ISBN": "3f317803-7eeb-4d53-9526-252ed5de8763", "MediaType": "CD", "Name": "Music to Code By" },
+        { "ISBN": "5785c6d5-8f02-44d4-8fa0-9534c75c59ab", "MediaType": "DVD", "Name": "The Program" },
+        { "ISBN": "e42bbd1f-9016-4752-b996-df3a9fc88067", "MediaType": "DVD", "Name": "Code of Honor" },
+        { "ISBN": "996d3e4f-dd4a-409a-9f5c-1148b215cd0d", "MediaType": "Game", "Name": "Halo Kitty" },
+        { "ISBN": "dab73bdd-6200-4be3-9bed-0784cd847419", "MediaType": "Game", "Name": "Angry Nerds" }
+    ]
+}

@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout Media</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <ul class="menu">
+                <li><a href="default.html">Dashboard</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="borrowers.html">Borrowers</a></li>
+            </ul>
+            <h1>My Media Catalog</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: possessed">
+                    <tr>
+                        <td data-bind="text: MediaType"></td>
+                        <td data-bind="text: Name, attr: { title: ISBN }"></td>
+                        <td><button data-bind="button: { label: 'Check Out' }, click: $parent.checkOut"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- ko if: borrowed().length > 0 -->
+            <h1>Borrowed</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Borrowed By</th>
+                        <th>Due Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: borrowed">
+                    <tr data-bind="css: { overdue: new Date(DueDate()) < new Date() }">
+                        <td data-bind="text: MediaType"></td>
+                        <td data-bind="text: Name, attr: { title: ISBN }"></td>
+                        <td data-bind="text: Borrower"></td>
+                        <td data-bind="text: $.datepicker.formatDate('mm/dd/yy', new Date(DueDate()))"></td>
+                        <td><button data-bind="button: { label: 'Check In' }, click: $parent.checkIn"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div data-bind="with: media, dialog: media, dialogOptions: { title: 'Check Out', buttons: { 'Save': save, 'Cancel': cancel }, dialogClass: 'no-close', modal: true, autoOpen: false, resizable: false, closeOnEscape: false, width: '440px' }">
+        <ol>
+            <li data-bind="css: { error: Borrower.hasError() }">
+                <label for="borrower">Borrower</label>
+                <select id="borrower" data-bind="options: $parent.borrowers, optionsText: 'Name', optionsValue: 'Name', optionsCaption: 'Select a Borrower', value: Borrower"></select>
+            </li>
+            <li data-bind="css: { error: DueDate.hasError() }">
+                <label for="due-date">Due Date</label>
+                <input id="due-date" type="text" data-bind="datepicker: DueDate">
+            </li>
+        </ol>
+    </div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/knockout-extensions.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/Models/Borrower.js"></script>
+    <script src="Scripts/Models/Media.js"></script>
+    <script src="Scripts/ViewModels/DefaultViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.DefaultViewModel);
+        })
+    </script>
+</body>
+</html>

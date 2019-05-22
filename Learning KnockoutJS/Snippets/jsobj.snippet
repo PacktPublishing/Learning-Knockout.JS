@@ -1,0 +1,30 @@
+<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>JavaScript Function Constructor</Title>
+    <Author>Robert Gaut</Author>
+    <Shortcut>jsobj</Shortcut>
+    <Description>Code snippet for a JavaScript Function Constructor</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>namespace</ID>
+        <ToolTip>Namespace for Object</ToolTip>
+        <Default>namespace</Default>
+      </Literal>
+      <Literal>
+        <ID>obj</ID>
+        <ToolTip>Object name</ToolTip>
+        <Default>obj</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="JavaScript"><![CDATA[var $namespace$ = window.$namespace$ || {};
+$namespace$.$obj$ = function () {
+    'use strict';
+		$end$
+};]]></Code>
+  </Snippet>
+</CodeSnippet>

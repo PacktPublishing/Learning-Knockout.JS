@@ -1,0 +1,5 @@
+﻿<h1>Knockout.JS &amp; Durandal</h1>
+<ul data-bind="foreach: colors">
+    <li data-bind="text: $data, click: $parent.showColor"></li>
+</ul>
+<div data-bind="text: selectedColor"></div>

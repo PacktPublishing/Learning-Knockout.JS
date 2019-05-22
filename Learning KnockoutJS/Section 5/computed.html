@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Writable Computed Observable</title>
+</head>
+<body>
+    <p>
+        <input type="text" data-bind="textInput: phone">
+    </p>
+    <div data-bind="text: output"></div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/ViewModels/ComputedViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.ComputedViewModel);
+        });
+    </script>
+</body>
+</html>

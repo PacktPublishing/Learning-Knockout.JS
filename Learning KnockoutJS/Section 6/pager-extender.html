@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Pager Extender</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <h1>My Media Catalog</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: catalog.paged">
+                    <tr>
+                        <td data-bind="text: MediaType"></td>
+                        <td data-bind="text: Name, attr: { title: ISBN }"></td>
+                    </tr>
+                </tbody>
+                <tfoot class="pager">
+                    <tr>
+                        <td colspan="2">
+                            <button data-bind="click: catalog.first">&lt;&lt;</button>
+                            <button data-bind="click: catalog.previous">&lt;</button>
+                            <button data-bind="click: catalog.next">&gt;</button>
+                            <button data-bind="click: catalog.last">&gt;&gt;</button>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            Page <input type="number" data-bind="value: catalog.current, attr: { 'max': catalog.count }" min="1" class="current-page"> of <span data-bind="text: catalog.count"></span>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/knockout-extensions.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/ViewModels/PagerExtenderViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.PagerExtenderViewModel);
+        });
+    </script>
+</body>
+</html>

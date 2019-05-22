@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscribe</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <fieldset>
+                <legend>Borrowers</legend>
+                <ol>
+                    <li>
+                        <select data-bind="options: borrowers, optionsText: 'Name', optionsValue: 'Email', optionsCaption: 'Select a Borrower', value: borrower"></select>
+                    </li>
+                    <li>
+                        <select data-bind="enable: catalog().length > 0, options: catalog, optionsText: 'Name', optionsCaption: 'Select a Borrowed Item', value: media"></select>
+                    </li>
+                </ol>
+            </fieldset>
+            <!-- ko if: media() -->
+            <br>
+            <fieldset>
+                <legend>Borrowed Item Details</legend>
+                <ol data-bind="with: media">
+                    <li>
+                        <label>ISBN</label>
+                        <div data-bind="text: ISBN" class="output"></div>
+                    </li>
+                    <li>
+                        <label>MediaType</label>
+                        <div data-bind="text: MediaType" class="output"></div>
+                    </li>
+                    <li>
+                        <label>Name</label>
+                        <div data-bind="text: Name" class="output"></div>
+                    </li>
+                    <li>
+                        <label>Due Date</label>
+                        <div data-bind="text: DueDate" class="output"></div>
+                    </li>
+                </ol>
+            </fieldset>
+            <!-- /ko -->
+            <br>
+            <fieldset>
+                <legend>History</legend>
+                <ol>
+                    <li>
+                        <label>Previous Selection</label>
+                        <div data-bind="text: previousBorrower" class="output"></div>
+                    </li>
+                </ol>
+            </fieldset>
+        </div>
+    </div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/ViewModels/SubscribeViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.SubscribeViewModel)
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My Media Catalog</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <h1>My Media Catalog</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: catalog">
+                    <tr data-bind="style: { 'font-weight': MediaType === 'Book' ? 'bold' : 'normal' }, css: { digital: $.inArray(MediaType, ['CD', 'DVD', 'Game']) > -1 }">
+                        <td data-bind="text: MediaType"></td>
+                        <td data-bind="text: Name, attr: { title: ISBN }"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/Models/Media.js"></script>
+    <script src="Scripts/ViewModels/DefaultViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            app.DefaultViewModel.init();
+            ko.applyBindings(app.DefaultViewModel);
+        });
+    </script>
+</body>
+</html>

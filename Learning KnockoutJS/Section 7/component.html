@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout.JS Components &amp; Custom Elements</title>
+</head>
+<body>
+    <h1>Component Binding</h1>
+    <div data-bind="component: { name: 'color-list', params: { display: showColor }}"></div>
+    <h1>Custom Element</h1>
+    <color-list params="{ display: showColor }"></color-list>
+
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/Components/ColorList.js"></script>
+    <script src="Scripts/ViewModels/ComponentViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.ComponentViewModel);
+        });
+    </script>
+</body>
+</html>

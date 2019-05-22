@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Parents Context</title>
+</head>
+<body>
+    <!-- ko foreach: taxonomies -->
+    <div data-bind="with: Animal">
+        <div data-bind="with: Kingdom">
+            <div data-bind="with: Phylum">
+                <div data-bind="with: Class">
+                    <div data-bind="with: Order">
+                        <div data-bind="with: Family">
+                            <div data-bind="with: Genus">
+                                <div data-bind="with: Species">
+                                    <h1 data-bind="text: $parents[6].Name, click: function () { $root.display($parents[6]); }">Animal</h1>
+                                    <div data-bind="text: $parents[5].Name, click: function () { $root.detail($element); }">Kingdom</div>
+                                    <div data-bind="text: $parents[4].Name, click: function () { $root.detail($element); }">Phylum</div>
+                                    <div data-bind="text: $parents[3].Name, click: function () { $root.detail($element); }">Class</div>
+                                    <div data-bind="text: $parents[2].Name, click: function () { $root.detail($element); }">Order</div>
+                                    <div data-bind="text: $parents[1].Name, click: function () { $root.detail($element); }">Family</div>
+                                    <div data-bind="text: $parent.Name, click: function () { $root.detail($element); }">Genus</div>
+                                    <div data-bind="text: $data.Name, click: function () { $root.detail($element); }">Species</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/ViewModels/WithViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.WithViewModel);
+        });
+    </script>
+</body>
+</html>

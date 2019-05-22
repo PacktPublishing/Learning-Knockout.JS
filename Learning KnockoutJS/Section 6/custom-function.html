@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Function</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <h1>Books</h1>
+            <!-- ko template: { name: 'media-template', data: books } --><!-- /ko -->
+            <h1>CD's</h1>
+            <!-- ko template: { name: 'media-template', data: cds } --><!-- /ko -->
+            <h1>DVD's</h1>
+            <!-- ko template: { name: 'media-template', data: dvds } --><!-- /ko -->
+            <h1>Games</h1>
+            <!-- ko template: { name: 'media-template', data: games } --><!-- /ko -->
+            <h1>Magazines</h1>
+            <!-- ko template: { name: 'media-template', data: magazines } --><!-- /ko -->
+        </div>
+    </div>
+    <script id="media-template" type="text/html">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: $data">
+                <tr>
+                    <td data-bind="text: Name"></td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/knockout-extensions.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/ViewModels/CustomFunctionViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.CustomFunctionViewModel);
+        });
+    </script>
+</body>
+</html>

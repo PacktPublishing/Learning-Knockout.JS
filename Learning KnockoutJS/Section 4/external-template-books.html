@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8">
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <div class="content">
+            <h1>Books</h1>
+            <!-- ko template: { name: 'media-table', data: books } -->
+            <!-- /ko -->
+        </div>
+    </div>
+    <script src="Scripts/jquery-2.1.4.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/DataContext.js"></script>
+    <script src="Scripts/ViewModels/TemplateViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            app.TemplateViewModel.loadTemplates(function () {
+                ko.applyBindings(app.TemplateViewModel);
+            });
+        });
+    </script>
+</body>
+</html>

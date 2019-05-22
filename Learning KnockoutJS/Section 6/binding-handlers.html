@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Learning KnockoutJS</title>
+</head>
+<body>
+    <ol data-bind="tabFieldsOnEnter: true">
+        <li>
+            <label>Field 1</label>
+            <input type="text" value="Test Data #1">
+        </li>
+        <li>
+            <label>Field 2</label>
+            <input type="text" data-bind="clearOnFocus: isClearOnFocus()" value="Test Data #2">
+        </li>
+        <li>
+            <label>Field 3</label>
+            <input type="text" data-bind="clearOnFocus: !isClearOnFocus()" value="Test Data #3">
+        </li>
+    </ol>
+    <button data-bind="click: toggleClearOnFocus">Toggle Clear On Focus</button>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/knockout-extensions.js"></script>
+    <script src="Scripts/ViewModels/BindingHandlersViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(app.BindingHandlersViewModel);
+        });
+    </script>
+</body>
+</html>

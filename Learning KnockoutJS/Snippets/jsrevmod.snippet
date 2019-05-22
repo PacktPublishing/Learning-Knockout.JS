@@ -1,0 +1,33 @@
+<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>JavaScript Revealing Module</Title>
+    <Author>Robert Gaut</Author>
+    <Shortcut>jsrevmod</Shortcut>
+    <Description>Code snippet for a JavaScript revealing module</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>namespace</ID>
+        <ToolTip>Namespace for module</ToolTip>
+        <Default>namespace</Default>
+      </Literal>
+      <Literal>
+        <ID>module</ID>
+        <ToolTip>Module name</ToolTip>
+        <Default>module</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="JavaScript"><![CDATA[var $namespace$ = window.$namespace$ || {};
+$namespace$.$module$ = (function () {
+    'use strict';
+    var me = {
+		$end$
+    };
+    return me;
+}());]]></Code>
+  </Snippet>
+</CodeSnippet>

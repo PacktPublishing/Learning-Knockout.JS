@@ -1,0 +1,9 @@
+﻿{
+    "Borrowers": [
+        { "Name": "Anne Teak", "Email": "anne.teak@roadshow.com" },
+        { "Name": "Faye King", "Email": "faye.king@interest.com" },
+        { "Name": "Justin Thyme", "Email": "justin.thyme@fordinner.com" },
+        { "Name": "Ann Sermai", "Email": "ann.sermai@questions.com" },
+        { "Name": "Paige Turner", "Email": "paige.turner@avidreader.com" }
+    ]
+}

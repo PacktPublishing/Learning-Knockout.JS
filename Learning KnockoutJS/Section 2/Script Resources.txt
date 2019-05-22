@@ -1,0 +1,3 @@
+﻿http://jquery.com/download/
+
+http://knockoutjs.com/downloads/index.html

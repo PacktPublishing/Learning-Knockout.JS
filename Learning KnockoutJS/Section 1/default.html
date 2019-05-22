@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Learning KnockoutJS</title>
+    <link href="Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <h1 data-bind="text: title"></h1>
+    <!--The "title" referenced here is the Observer in the Observer design pattern. 
+        It subscribes to updates from the Subject in our ViewModel-->
+    <fieldset>
+        <legend>Edit</legend>
+        <p>
+            <label for="title">Title</label>
+            <input id="title" type="text" data-bind="textInput: title">
+        </p>
+        <p>
+            <button data-bind="click: update">Update from Server</button>
+        </p>
+    </fieldset>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/knockout-3.3.0.js"></script>
+    <script src="Scripts/ViewModels/DefaultViewModel.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Knockout.JS activates its binding engine for this View
+            ko.applyBindings(app.DefaultViewModel);
+        });
+    </script>
+</body>
+</html>
